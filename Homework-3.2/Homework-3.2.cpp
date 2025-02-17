@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include <Windows.h>
+
 using namespace std;
 
 class Counter {
@@ -14,10 +16,12 @@ public:
     };
 
     Counter(int count) {
-        if (count == 0) {
+        if (count == 1) {
         this->count = 1;
         }
-        this->count = count;
+        else {
+            this->count = count;
+        }
     };
 
     void add() {
@@ -36,8 +40,11 @@ public:
 int main()
 {
     setlocale(LC_CTYPE, "rus");
-    int num = 0;
+    
+    int num = 1;
     string text;
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
     cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     cin >> text;
@@ -63,9 +70,9 @@ int main()
             counter.mes();
             break;
         case ('x'):
-            return false;
+            return 0;
             break;
-        default: return true;
+        default: return;
         }
 
     }
